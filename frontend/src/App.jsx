@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
 
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("http://localhost:4000/api/hello")
-      .then(res => res.json())
-      .then(data => setData(data.message));
-  }, []);
-
   return (
-    <div className="h-screen flex justify-center items-center bg-gray-900 text-white text-3xl font-semibold">
-      {data ? data : "Loading..."}
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
