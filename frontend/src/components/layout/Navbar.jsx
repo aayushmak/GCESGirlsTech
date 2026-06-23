@@ -9,6 +9,9 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Pages that have a white/light background — navbar should be white with dark text
+  const isLightPage = location.pathname === '/about';
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -25,35 +28,46 @@ const Navbar = () => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  // Nav background
+  const navBg = isScrolled
+    ? 'bg-primary/95 backdrop-blur-md shadow-sm py-4'
+    : isLightPage
+      ? 'bg-white shadow-sm py-4'
+      : 'bg-transparent py-8';
+
+
+  // Mobile icon color
+  const iconColor = isScrolled
+    ? 'text-white'
+    : isLightPage
+      ? 'text-[#0B1F1E]'
+      : 'text-white';
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-primary/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-8'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
       <div className="container mx-auto px-10 flex items-center justify-between">
         {/* Logo */}
-        <img src={logo} alt="GCES Girls Tech" className="w-12 h-12"></img>
+        <Link to="/">
+          <img src={logo} alt="GCES Girls Tech" className="w-12 h-12" />
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-12">
           {navLinks.map((link) => {
             const isContact = link.href.startsWith('#');
-            const isAboutRoute = location.pathname === '/about';
-            const textClass = isScrolled 
-              ? 'text-white' 
-              : (isAboutRoute ? 'text-[#0B1F1E]' : (location.pathname !== '/' ? 'text-white' : 'text-primary md:text-white'));
-            
+            const cls = `text-sm font-medium transition-colors hover:text-secondary ${
+              isScrolled
+                ? 'text-white'
+                : isLightPage
+                  ? 'text-[#0B1F1E] hover:text-[#E11D74]'
+                  : 'text-white'
+            }`;
             return isContact ? (
-              <a
-                key={link.name}
-                href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-secondary ${textClass}`}
-              >
+              <a key={link.name} href={link.href} className={cls}>
                 {link.name}
               </a>
             ) : (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={`text-sm font-medium transition-colors hover:text-secondary ${textClass}`}
-              >
+              <Link key={link.name} to={link.href} className={cls}>
                 {link.name}
               </Link>
             );
@@ -61,14 +75,14 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <X className={`transition-colors ${isScrolled ? 'text-white' : (location.pathname === '/about' ? 'text-[#0B1F1E]' : 'text-white')}`} />
+            <X className={`transition-colors ${iconColor}`} />
           ) : (
-            <Menu className={`transition-colors ${isScrolled ? 'text-white' : (location.pathname === '/about' ? 'text-[#0B1F1E]' : 'text-white')}`} />
+            <Menu className={`transition-colors ${iconColor}`} />
           )}
         </button>
       </div>
@@ -82,7 +96,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-primary overflow-hidden"
           >
-            <div className="flex flex-col gap-4 p-8">
+            <div className="flex flex-col gap-4 px-6 py-4">
               {navLinks.map((link) => {
                 const isContact = link.href.startsWith('#');
                 return isContact ? (
