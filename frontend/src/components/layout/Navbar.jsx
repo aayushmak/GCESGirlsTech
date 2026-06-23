@@ -38,7 +38,7 @@ const navLinks = [
 
 ];
 
-const darkTextRoutes = ["/about", "/blog", "/activities", "/team"];
+const darkTextRoutes = ["/about", "/blog", "/activities", "/team","/blog/:id"];
 const isDarkTextRoute = darkTextRoutes.includes(location.pathname);
 
 const textClass = isScrolled

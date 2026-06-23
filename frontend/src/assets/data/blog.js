@@ -31,6 +31,21 @@ export const blogs = [
     title: "Introduction to Artificial Intelligence",
     semester: "2nd",
     time: "Evening",
+    author: "Aayushma Kafle",
+    date: "5th Jan 2025",
+    readTime: "5 min read",
+
+    description:
+      "From voice assistants to recommendation systems, this blog explores how AI quietly shapes our daily experiences.",
+
+    quote:
+      "Artificial Intelligence (AI) is often imagined as something futuristic or limited to robots and high-tech labs.",
+
+    content: [
+      "However, AI is already deeply integrated into our daily lives...",
+      "One of the most common places we experience AI is through our smartphones...",
+      "AI also plays a major role in online shopping and social media...",
+    ],
   },
   {
     id: 3,
@@ -39,6 +54,21 @@ export const blogs = [
     title: "Why React is popular",
     semester: "1st",
     time: "Morning",
+    author: "Aayushma Kafle",
+    date: "5th Jan 2025",
+    readTime: "5 min read",
+
+    description:
+      "From voice assistants to recommendation systems, this blog explores how AI quietly shapes our daily experiences.",
+
+    quote:
+      "Artificial Intelligence (AI) is often imagined as something futuristic or limited to robots and high-tech labs.",
+
+    content: [
+      "However, AI is already deeply integrated into our daily lives...",
+      "One of the most common places we experience AI is through our smartphones...",
+      "AI also plays a major role in online shopping and social media...",
+    ],
   },
   {
     id: 4,
@@ -47,6 +77,21 @@ export const blogs = [
     title: "Understanding Design Systems",
     semester: "2nd",
     time: "Evening",
+    author: "Aayushma Kafle",
+    date: "5th Jan 2025",
+    readTime: "5 min read",
+
+    description:
+      "From voice assistants to recommendation systems, this blog explores how AI quietly shapes our daily experiences.",
+
+    quote:
+      "Artificial Intelligence (AI) is often imagined as something futuristic or limited to robots and high-tech labs.",
+
+    content: [
+      "However, AI is already deeply integrated into our daily lives...",
+      "One of the most common places we experience AI is through our smartphones...",
+      "AI also plays a major role in online shopping and social media...",
+    ],
   },
   {
     id: 5,
@@ -55,5 +100,20 @@ export const blogs = [
     title: "Machine Learning Basics",
     semester: "3rd",
     time: "Morning",
+    author: "Aayushma Kafle",
+    date: "5th Jan 2025",
+    readTime: "5 min read",
+
+    description:
+      "From voice assistants to recommendation systems, this blog explores how AI quietly shapes our daily experiences.",
+
+    quote:
+      "Artificial Intelligence (AI) is often imagined as something futuristic or limited to robots and high-tech labs.",
+
+    content: [
+      "However, AI is already deeply integrated into our daily lives...",
+      "One of the most common places we experience AI is through our smartphones...",
+      "AI also plays a major role in online shopping and social media...",
+    ],
   },
 ];

@@ -12,7 +12,7 @@ import {motion} from 'framer-motion'
       The <span className="text-secondary italic">{title}</span>
     </motion.h3>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 max-w-[1400px] mb-16">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 max-w-[1400px] mb-16 justify-around">
       {members.map((member, index) => (
         <TeamMemberCard
           key={member.name}

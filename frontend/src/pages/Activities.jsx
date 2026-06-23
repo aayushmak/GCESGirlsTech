@@ -4,6 +4,7 @@ import ActivityCard from "../components/ui/ActivityCard";
 import Pagination from "../components/ui/Pagination";
 import usePagination from "../hooks/usePagination";
 import { activities } from "../assets/data/activity";
+import { motion } from "framer-motion";
 
 const Activities = () => {
   const { currentItems, currentPage, setCurrentPage, totalPages } =
@@ -15,26 +16,62 @@ const Activities = () => {
       <div className="absolute top-0 left-0 w-full bg-white h-24 z-40 flex items-center shadow-sm">
         <Navbar />
       </div>
-      <div className="text-center mt-24">
-        <h1 className="font-serif text-5xl lg:text-7xl">
+
+      <motion.div 
+        className="text-center mt-24"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <motion.h1 
+          className="font-serif text-5xl lg:text-7xl"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           Our
           <span className="italic text-secondary"> Activities</span>
-        </h1>
+        </motion.h1>
 
-        <p className="text-gray-500 mt-5">From workshops to events...</p>
-      </div>
+        <motion.p 
+          className="text-gray-500 mt-5"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          From workshops to events...
+        </motion.p>
+      </motion.div>
 
-      <div className="mx-6 lg:mx-16 mt-16 space-y-10 ">
-        {currentItems.map((activity) => (
-          <ActivityCard key={activity.id} {...activity} />
+      <motion.div 
+        className="mx-6 lg:mx-16 mt-16 space-y-10 "
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2 }}
+      >
+        {currentItems.map((activity, index) => (
+          <ActivityCard 
+            key={activity.id} 
+            {...activity}
+            delay={0.1 * index}
+          />
         ))}
 
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          totalPages={totalPages}
-        />
-      </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+        >
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+          />
+        </motion.div>
+      </motion.div>
 
       <Footer />
     </div>

@@ -14,6 +14,8 @@ const Blog = () => {
     semester: [],
   });
 
+  
+
   const handleFilterChange = (category, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -63,16 +65,24 @@ const Blog = () => {
 
         <section className="w-full lg:w-[250px]">
 
-          <motion.h1 initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} className="text-4xl md:text-5xl font-serif mb-10">
+          <motion.h1 
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-serif mb-10">
             Our{" "}
             <span className="text-secondary italic">
               Blogs
             </span>
           </motion.h1>
 
-          <div className="space-y-5">
+          <motion.div 
+            className="space-y-5"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
 
             <FilterSection
               title="Time"
@@ -98,7 +108,7 @@ const Blog = () => {
               handleFilterChange={handleFilterChange}
             />
 
-          </div>
+          </motion.div>
 
         </section>
 
@@ -106,22 +116,43 @@ const Blog = () => {
 
         <section className="flex-1">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
 
-            {currentBlogs.map((blog) => (
-              <BlogCard
+            {currentBlogs.map((blog, index) => (
+              <motion.div
                 key={blog.id}
-                {...blog}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.05 * index }}
+              >
+                <BlogCard
+                  {...blog}
+                  delay={0.05 * index}
+                />
+              </motion.div>
             ))}
 
-          </div>
+          </motion.div>
 
-          <Pagination
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalPages={totalPages}
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <Pagination
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+              totalPages={totalPages}
+            />
+          </motion.div>
 
         </section>
 
@@ -140,9 +171,13 @@ const FilterSection = ({
   handleFilterChange,
 }) => {
   return (
-    <details>
+    <motion.details
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+    >
 
-      <summary className="flex justify-between items-center cursor-pointer border-b pb-4">
+      <summary className="flex justify-between items-center cursor-pointer border-b pb-4 hover:text-secondary transition-colors">
 
         <span>{title}</span>
 
@@ -152,13 +187,19 @@ const FilterSection = ({
 
       </summary>
 
-      <div className="mt-4 space-y-3">
+      <motion.div 
+        className="mt-4 space-y-3"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+      >
 
         {options.map((option) => (
 
-          <label
+          <motion.label
             key={option}
-            className="flex gap-2"
+            className="flex gap-2 cursor-pointer hover:text-secondary transition-colors"
+            whileHover={{ x: 5 }}
           >
 
             <input
@@ -167,17 +208,18 @@ const FilterSection = ({
               onChange={() =>
                 handleFilterChange(category, option)
               }
+              className="cursor-pointer"
             />
 
             {option}
 
-          </label>
+          </motion.label>
 
         ))}
 
-      </div>
+      </motion.div>
 
-    </details>
+    </motion.details>
   );
 };
 

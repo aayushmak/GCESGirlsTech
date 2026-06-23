@@ -56,7 +56,7 @@ export const team = [
   // Mentors
   {
     id: 6,
-    name: "Mentor Name",
+    name: "Ankita Gurung",
     role: "Club Mentor",
     image: mentor1,
     bgColor: "bg-green-200",
