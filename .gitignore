@@ -1,0 +1,10 @@
+# mac files
+.DS_Store
+
+# old image formats if moving to webp
+*.png
+*.jpg
+*.jpeg
+
+# very large media
+*.psd
