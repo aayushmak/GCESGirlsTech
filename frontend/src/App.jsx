@@ -7,12 +7,14 @@ import Activities from "./pages/Activities";
 import Team from "./pages/Team";
 import BlogPage from "./pages/BlogPage";
 import ActivityPage from "./pages/ActivityPage";
+import ScrollToTop from "./components/layout/ScrollTop";
 
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

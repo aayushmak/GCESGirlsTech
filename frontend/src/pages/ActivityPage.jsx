@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { activities } from "../assets/data/activity";
 import { Calendar, X } from "lucide-react";
 import { motion } from "framer-motion";
+import useGallery from "../hooks/useGallery";
 
 const ActivityPage = () => {
   const { id } = useParams();
@@ -11,6 +12,7 @@ const ActivityPage = () => {
 
   const activity = activities.find((item) => item.id === Number(id));
 
+  // Prevent crash if activity not found
   if (!activity) {
     return (
       <motion.h1
@@ -23,112 +25,206 @@ const ActivityPage = () => {
     );
   }
 
+  const galleryImages = useGallery(activity.galleryFolder);
+
   return (
     <div className="bg-white min-h-screen pt-10">
-      <motion.div 
-        className="max-w-7xl mx-auto bg-[#F8F8F8] rounded-[40px] p-6 lg:p-10"
+      <motion.div
+        className="
+        max-w-7xl
+        mx-auto
+        bg-[#F8F8F8]
+        rounded-[40px]
+        p-6
+        lg:p-10
+        "
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <motion.div 
-          className="flex justify-end me-8"
-          whileHover={{ scale: 1.05 }}
-        >
-          <motion.button 
-            onClick={() => navigate(-1)} 
-            className="text-primary hover:text-secondary transition-colors cursor-pointer"
-            whileHover={{ rotate: 90 }}
-            transition={{ duration: 0.3 }}
+        {/* Close Button */}
+
+        <div className="flex justify-end me-4">
+          <motion.button
+            onClick={() => navigate(-1)}
+            whileHover={{
+              rotate: 90,
+              scale: 1.1,
+            }}
+            className="
+            text-primary
+            hover:text-secondary
+            cursor-pointer
+            "
           >
             <X size={35} />
           </motion.button>
-        </motion.div>
+        </div>
 
-        <motion.h1 
-          className="font-serif text-4xl lg:text-7xl leading-tight text-primary max-w-3xl"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.5 }}
+        {/* Title */}
+
+        <motion.h1
+          className="
+          font-serif
+          text-4xl
+          lg:text-7xl
+          leading-tight
+          text-primary
+          max-w-4xl
+          "
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.1,
+          }}
         >
           {activity.title}
         </motion.h1>
 
-        <motion.div 
-          className="flex items-center gap-2 mt-6 text-gray-500"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+        {/* Date */}
+
+        <motion.div
+          className="
+          flex
+          items-center
+          gap-2
+          mt-6
+          text-gray-500
+          "
+          initial={{
+            opacity: 0,
+            x: -20,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+          }}
+          transition={{
+            delay: 0.2,
+          }}
         >
           <Calendar size={18} />
           {activity.date}
         </motion.div>
 
-        <motion.div 
-          className="grid lg:grid-cols-2 gap-10 mt-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
+        {/* Description Section */}
+
+        <motion.div
+          className="
+          grid
+          lg:grid-cols-2
+          gap-10
+          mt-12
+          "
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            delay: 0.3,
+          }}
         >
           <motion.img
             src={activity.image}
-            className="rounded-[30px] w-full h-[350px] object-cover"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
+            alt={activity.title}
+            className="
+            rounded-[30px]
+            w-full
+            h-[350px]
+            object-cover
+            "
+            whileHover={{
+              scale: 1.02,
+            }}
           />
 
-          <motion.div 
-            className="text-lg leading-relaxed whitespace-pre-line"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+          <div
+            className="
+            text-lg
+            leading-relaxed
+            whitespace-pre-line
+            text-gray-700
+            "
           >
             {activity.description}
-          </motion.div>
+          </div>
         </motion.div>
 
-        <motion.div 
+        {/* Gallery */}
+
+        <motion.div
           className="mt-28"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
         >
-          <motion.h2 
-            className="text-center font-serif text-5xl text-secondary mb-12"
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <h2
+            className="
+            text-center
+            font-serif
+            text-5xl
+            text-secondary
+            mb-12
+            "
           >
             Gallery
-          </motion.h2>
+          </h2>
 
-          <motion.div
-            className="flex gap-8 overflow-x-auto p-4 scroll-smooth"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <div
+            className="
+            flex
+            gap-6
+            overflow-x-auto
+            pb-6
+            scroll-smooth
+            scrollbar-hide
+            "
           >
-            {activity.gallery.map((img, index) => (
+            {galleryImages.map((image, index) => (
               <motion.div
                 key={index}
-                className="min-w-[280px] h-[280px] shrink-0"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.05 * index }}
-                whileHover={{ scale: 1.0001 }}
+                className="
+                min-w-[280px]
+                md:min-w-[320px]
+                h-[280px]
+                shrink-0
+                rounded-[20px]
+                overflow-hidden
+                "
+                whileHover={{
+                  scale: 1.03,
+                }}
               >
-                <motion.img
-                  src={img}
-                  className="w-full h-full object-cover rounded-[20px]"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
+                <img
+                  src={image}
+                  alt={`gallery-${index}`}
+                  className="
+                  w-full
+                  h-full
+                  object-cover
+                  "
                 />
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
       </motion.div>
 

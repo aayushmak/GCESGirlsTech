@@ -1,15 +1,32 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import Button from "../ui/Button";
+import { activities } from "../../assets/data/activity";
+import usePagination from "../../hooks/usePagination";
+import { useNavigate } from "react-router-dom";
 
 const ActivitiesSection = () => {
+  const navigate = useNavigate();
+
+  // show only recent activities on homepage
+  const {
+    currentItems: recentActivities,
+    currentPage,
+    setCurrentPage,
+  } = usePagination(activities, 2);
+
   return (
     <section id="activities" className="py-20 bg-off-white">
-      <div className="container mx-auto px-10 max-w-6xl">
-        <div className="bg-primary rounded-[3rem] p-10 md:p-14 shadow-xl">
+      <div className="container mx-auto px-6 lg:px-10 max-w-6xl">
+        <div className="bg-primary rounded-[3rem] p-8 md:p-14 shadow-xl">
+
+          {/* Heading */}
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-px bg-white/50" />
-            <span className="text-white/70 text-xs tracking-widest font-bold">ACTIVITIES</span>
+            <span className="text-white/70 text-xs tracking-widest font-bold">
+              ACTIVITIES
+            </span>
           </div>
 
           <motion.h2
@@ -21,39 +38,91 @@ const ActivitiesSection = () => {
             Recent Activities
           </motion.h2>
 
+          {/* Activities */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-            {/* Image Placeholder 1 */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="w-full h-64 md:h-80 bg-gray-200 rounded-[2rem] shadow-lg"
-            />
-            {/* Image Placeholder 2 */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="w-full h-64 md:h-80 bg-gray-200 rounded-[2rem] shadow-lg"
-            />
+
+            {recentActivities.map((activity, index) => (
+              <motion.div
+                key={activity.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                onClick={() =>
+                  navigate(`/activities/${activity.id}`)
+                }
+                className="relative overflow-hidden rounded-[2rem] cursor-pointer group h-[280px]"
+              >
+                {/* Image */}
+                <img
+                  src={activity.image}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/50 transition-all duration-500" />
+
+                {/* Title in center on hover */}
+                <div
+                  className="
+                    absolute inset-0
+                    flex items-center justify-center
+                    opacity-0
+                    group-hover:opacity-100
+                    transition-all duration-500
+                  "
+                >
+                  <h3 className="text-white font-serif text-2xl md:text-3xl text-center px-6">
+                    {activity.title}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="flex justify-end gap-3"
-          >
-            <button className="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-gray-100 transition-all text-secondary shadow-md">
-              <ArrowLeft size={16} />
-            </button>
-            <button className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center hover:brightness-110 transition-all text-white shadow-md cursor-pointer">
-              <ArrowRight size={16} />
-            </button>
-          </motion.div>
+          {/* Bottom controls */}
+          <div className="flex justify-between items-center flex-wrap gap-4">
+
+            <Button
+              variant="accent"
+              size="md"
+              className="rounded-full"
+              onClick={() => navigate("/activities")}
+            >
+              View All Activities
+            </Button>
+
+            {/* Pagination arrows */}
+            <div className="flex gap-3">
+
+              <Button
+                variant="ghost"
+                className="rounded-full w-10 h-10 p-0 bg-white"
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    prev > 1 ? prev - 1 : prev
+                  )
+                }
+              >
+                <ArrowLeft size={16} />
+              </Button>
+
+              <Button
+                variant="accent"
+                className="rounded-full w-10 h-10 p-0"
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    prev < Math.ceil(activities.length / 2)
+                      ? prev + 1
+                      : prev
+                  )
+                }
+              >
+                <ArrowRight size={16} />
+              </Button>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>

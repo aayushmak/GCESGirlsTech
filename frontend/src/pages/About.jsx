@@ -2,7 +2,13 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import { motion } from 'framer-motion';
-import gcesBg from '../assets/images/gces_1.png';
+import img1 from '../assets/images/about/img1.png';
+import img2 from '../assets/images/about/img2.png';
+import img3 from '../assets/images/about/img3.png';
+import img4 from '../assets/images/about/img4.png';
+import img5 from '../assets/images/about/img5.png';
+import img6 from '../assets/images/about/img6.png';
+
 
 const About = () => {
   useEffect(() => {
@@ -70,7 +76,7 @@ const About = () => {
                     className="w-full lg:w-[90%]"
                   >
                   <div className="w-full h-48 lg:h-56 border-2 border-[#0B1F1E] rounded-[2rem] shadow-[8px_8px_0_#0B1F1E] hover:-translate-y-1 hover:shadow-[10px_10px_0_#0B1F1E] transition-all duration-300 overflow-hidden relative">
-                    <img src={gcesBg} alt="GCES Girls Tech" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
+                    <img src={img1} alt="GCES Girls Tech" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
                   </div>
                   </motion.div>
                   <div className="flex gap-3 lg:gap-4 w-full lg:w-[90%]">
@@ -82,7 +88,7 @@ const About = () => {
                       className="w-1/2"
                     >
                       <div className="w-full h-36 lg:h-48 border-2 border-[#0B1F1E] rounded-[2rem] shadow-[8px_8px_0_#0B1F1E] hover:-translate-y-1 hover:shadow-[10px_10px_0_#0B1F1E] transition-all duration-300 overflow-hidden relative">
-                        <img src={gcesBg} alt="GCES Girls Tech" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
+                        <img src={img2} alt="GCES Girls Tech" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
                       </div>
                     </motion.div>
                     <motion.div 
@@ -93,7 +99,7 @@ const About = () => {
                       className="w-1/2"
                     >
                       <div className="w-full h-36 lg:h-48 border-2 border-[#0B1F1E] rounded-[2rem] shadow-[8px_8px_0_#0B1F1E] hover:-translate-y-1 hover:shadow-[10px_10px_0_#0B1F1E] transition-all duration-300 overflow-hidden relative">
-                        <img src={gcesBg} alt="GCES Girls Tech" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
+                        <img src={img3} alt="GCES Girls Tech" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
                       </div>
                     </motion.div>
                   </div>
@@ -114,7 +120,7 @@ const About = () => {
                   viewport={{ once: true }}
                 >
                   <div className="w-full h-56 md:h-72 lg:h-[320px] border-2 border-[#0B1F1E] rounded-[2rem] lg:rounded-[40px] shadow-[8px_8px_0_#0B1F1E] hover:-translate-y-1 hover:shadow-[10px_10px_0_#0B1F1E] transition-all duration-300 overflow-hidden relative">
-                    <img src={gcesBg} alt="Our Story" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
+                    <img src={img6} alt="Our Story" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
                   </div>
                 </motion.div>
               </div>
@@ -214,7 +220,7 @@ const About = () => {
                   className="w-full max-w-[500px]"
                 >
                   <div className="w-full h-80 lg:h-[420px] border-2 border-[#0B1F1E] rounded-[2rem] lg:rounded-[40px] shadow-[8px_8px_0_#0B1F1E] hover:-translate-y-1 hover:shadow-[10px_10px_0_#0B1F1E] transition-all duration-300 overflow-hidden relative">
-                    <img src={gcesBg} alt="What We Do" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
+                    <img src={img4} alt="What We Do" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
                   </div>
                 </motion.div>
               </div>
@@ -234,7 +240,7 @@ const About = () => {
                   className="w-full max-w-[500px]"
                 >
                   <div className="w-full h-64 md:h-72 lg:h-[350px] border-2 border-[#0B1F1E] rounded-[2rem] lg:rounded-[40px] shadow-[8px_8px_0_#0B1F1E] hover:-translate-y-1 hover:shadow-[10px_10px_0_#0B1F1E] transition-all duration-300 overflow-hidden relative">
-                    <img src={gcesBg} alt="Vision and Mission" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
+                    <img src={img5} alt="Vision and Mission" className="absolute inset-0 w-full h-full object-cover rounded-[inherit]" />
                   </div>
                 </motion.div>
               </div>
