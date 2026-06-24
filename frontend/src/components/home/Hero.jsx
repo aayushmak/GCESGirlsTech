@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
-import gcesBg from '../../assets/images/gces_1.png';
+import gcesBg from '../../assets/images/gces_1.webp';
 
 const Hero = () => {
   return (

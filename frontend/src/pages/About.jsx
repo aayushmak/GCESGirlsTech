@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import { motion } from 'framer-motion';
-import img1 from '../assets/images/about/img1.png';
-import img2 from '../assets/images/about/img2.png';
-import img3 from '../assets/images/about/img3.png';
-import img4 from '../assets/images/about/img4.png';
-import img5 from '../assets/images/about/img5.png';
-import img6 from '../assets/images/about/img6.png';
+import img1 from '../assets/images/about/img1.webp';
+import img2 from '../assets/images/about/img2.webp';
+import img3 from '../assets/images/about/img3.webp';
+import img4 from '../assets/images/about/img4.webp';
+import img5 from '../assets/images/about/img5.webp';
+import img6 from '../assets/images/about/img6.webp';
 
 
 const About = () => {

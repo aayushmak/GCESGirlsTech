@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Instagram, Facebook, Linkedin } from 'lucide-react';
-import gcesBg from '../../assets/images/gces_1.png'; 
+import gcesBg from '../../assets/images/gces_1.webp'; 
 
 const Footer = () => {
   return (

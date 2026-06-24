@@ -1,47 +1,47 @@
-import president from '../images/members/President.png';
-import vpresident from '../images/members/VicePresident.jpg';
-import secratary from '../images/members/Secratary.jpg';
-import socialmediahandler from '../images/members/SocialMediaHandler.jpg';
-import graphicdesigner from '../images/members/GraphicDesigner.jpg';
-import clubcoordinatior from '../images/members/ClubCoordinator.png'
-import mentor1 from '../images/members/mentor1.png';
+import president from '../images/members/President.webp';
+import vpresident from '../images/members/VicePresident.webp';
+import secratary from '../images/members/Secratary.webp';
+import socialmediahandler from '../images/members/SocialMediaHandler.webp';
+import graphicdesigner from '../images/members/GraphicDesigner.webp';
+import clubcoordinatior from '../images/members/ClubCoordinator.webp'
+import mentor1 from '../images/members/mentor1.webp';
 const CE4 = new URL(
-  "../images/members/CE4.png",
+  "../images/members/CE4.webp",
   import.meta.url
 ).href;
 
 const CE3 = new URL(
-  "../images/members/CE3.jpg",
+  "../images/members/CE3.webp",
   import.meta.url
 ).href;
 
 const CE2 = new URL(
-  "../images/members/CE2.jpg",
+  "../images/members/CE2.webp",
   import.meta.url
 ).href;
 
 const CE1 = new URL(
-  "../images/members/CE1.png",
+  "../images/members/CE1.webp",
   import.meta.url
 ).href;
 
 const CE11 = new URL(
-  "../images/members/CE11.png",
+  "../images/members/CE11.webp",
   import.meta.url
 ).href;
 
 const SE1 = new URL(
-  "../images/members/SE1.png",
+  "../images/members/SE1.webp",
   import.meta.url
 ).href;
 
 const SE2 = new URL(
-  "../images/members/SE2.png",
+  "../images/members/SE2.webp",
   import.meta.url
 ).href;
 
 const SE3 = new URL(
-  "../images/members/SE3.png",
+  "../images/members/SE3.webp",
   import.meta.url
 ).href;
 

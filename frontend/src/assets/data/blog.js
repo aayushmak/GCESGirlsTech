@@ -1,20 +1,20 @@
 const blog1 = new URL(
-  "../images/blog/blog1.png",
+  "../images/blog/blog1.webp",
   import.meta.url
 ).href;
 
 const blog2 = new URL(
-  "../images/blog/blog2.png",
+  "../images/blog/blog2.webp",
   import.meta.url
 ).href;
 
 const blog3 = new URL(
-  "../images/blog/blog3.png",
+  "../images/blog/blog3.webp",
   import.meta.url
 ).href;
 
 const blog4 = new URL(
-  "../images/blog/blog4.jpg",
+  "../images/blog/blog4.webp",
   import.meta.url
 ).href;
 
